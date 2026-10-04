@@ -97,13 +97,15 @@ Example:
 
 ``` ini
 [db]
-command=...
-depends=
+command=sleep 100000
+restart=always
+
+[api]
+command=sleep 100001
+depends=db
 restart=on-failure
 max_restarts=5
 backoff_ms=500
-ready_delay_ms=0
-stop_timeout_ms=3000
 ```
 
 Supported restart policies are `never`, `on-failure`, and `always`.
